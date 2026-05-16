@@ -82,31 +82,15 @@ body.opened .card-stage{display:block}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-const YOUTUBE_LINK = "https://youtu.be/Evm8KhnKWSc";
+const MUSIC_LINK = "https://freefy.app/track/21896349/made-in-japan";
 
-let ytStarted=false;
+function playMusic() {
+  window.open(MUSIC_LINK, "_blank");
+}
 
 function openCard(){
   document.body.classList.add("opened");
   setTimeout(()=>window.scrollTo({top:0,behavior:"smooth"}),80);
-}
-
-function getYouTubeId(url){
-  const match=url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  return match?match[1]:null;
-}
-
-function playYouTube(){
-  const id=getYouTubeId(YOUTUBE_LINK);
-  const btn=document.getElementById("musicBtn");
-  if(!id){btn.textContent="Paste YouTube link first";return;}
-  if(!ytStarted){
-    document.getElementById("ytbox").innerHTML=`<iframe width="1" height="1" src="https://www.youtube.com/embed/${id}?autoplay=1&loop=1&playlist=${id}&controls=0" allow="autoplay; encrypted-media"></iframe>`;
-    ytStarted=true;btn.textContent="Song is playing ♪";
-  }else{
-    document.getElementById("ytbox").innerHTML="";
-    ytStarted=false;btn.textContent="Play the song ♪";
-  }
 }
 
 async function downloadCard(){
@@ -120,8 +104,8 @@ async function downloadCard(){
 
 document.getElementById("openCover").addEventListener("click",openCard);
 document.getElementById("openBtn").addEventListener("click",function(e){e.stopPropagation();openCard();});
-document.getElementById("musicBtn").addEventListener("click",playYouTube);
-document.getElementById("musicFab").addEventListener("click",playYouTube);
+document.getElementById("musicBtn").addEventListener("click", playMusic);
+document.getElementById("musicFab").addEventListener("click", playMusic);
 document.getElementById("downloadBtn").addEventListener("click",downloadCard);
 </script>
 </body>
