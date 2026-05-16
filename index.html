@@ -80,16 +80,22 @@ body.opened .card-stage{display:block}
 <div class="music-fab" id="musicFab">♪</div>
 <div id="musicEmbed" style="
   display:none;
-  width:1px;
-  height:1px;
+  margin-top:14px;
+  border-radius:22px;
   overflow:hidden;
-  opacity:0;
+  background:#fff;
+  box-shadow:0 14px 34px rgba(75,48,42,.12);
+  animation:fadeIn .45s ease;
 ">
   <iframe
-    width="1"
-    height="1"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    src="https://freefy.app/track/21896349/made-in-japan/embed">
+    width="100%"
+    height="220"
+    src="https://www.youtube.com/embed/puqBPTEbY-E?rel=0"
+    title="A song for you"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    style="border:none;">
   </iframe>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -104,13 +110,21 @@ function playMusic() {
 
   if (embed.style.display === "none") {
     embed.style.display = "block";
-    btn.textContent = "playing your song ♪";
+    btn.textContent = "tap play on your song ♪";
+
+    setTimeout(() => {
+      embed.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 120);
+
   } else {
     embed.style.display = "none";
     btn.textContent = "a song for you ♪";
   }
 }
-
+  
 async function downloadCard(){
   const area=document.getElementById("downloadArea");
   const canvas=await html2canvas(area,{backgroundColor:"#fff8ef",scale:3,useCORS:true});
