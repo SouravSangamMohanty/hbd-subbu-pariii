@@ -59,7 +59,7 @@ body.opened .card-stage{display:block}
     <div>
       <div class="heart">💖</div>
       <h1>For you..</h1>
-      <p class="sub">someone who deserved better from me this time…<br>
+      <p class="small">someone who deserved better from me this time…<br>
         my tiny late birthday thank-you for you, Subbu!! 🥞 </p>
       <button type="button" id="openBtn">Open your little card</button>
     </div>
@@ -94,6 +94,10 @@ body.opened .card-stage{display:block}
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
+function openCard(){
+  document.body.classList.add("opened");
+  setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 80);
+}
 function playMusic() {
   const embed = document.getElementById("musicEmbed");
   const btn = document.getElementById("musicBtn");
