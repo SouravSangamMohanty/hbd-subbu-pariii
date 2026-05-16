@@ -148,7 +148,7 @@ function playMusic() {
     song.volume = 0.55;
     song.play();
     btn.textContent = "playing your song ♪";
-    setTimeout(showBirthdayFlash, 3000);
+    setTimeout(showBirthdayFlash, 4000);
   } else {
     song.pause();
     btn.textContent = "a song for you ♪";
@@ -161,7 +161,7 @@ function showBirthdayFlash(){
 
   setTimeout(() => {
     flash.style.display = "none";
-  }, 1800);
+  }, 2700);
 }
 
 async function downloadCard(){
