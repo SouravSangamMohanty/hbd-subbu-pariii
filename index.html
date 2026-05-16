@@ -53,6 +53,15 @@ body.opened .card-stage{display:block}
 .music-fab{position:fixed;right:16px;bottom:16px;z-index:5;width:54px;height:54px;border-radius:999px;display:grid;place-items:center;background:rgba(255,253,248,.92);border:1px solid rgba(120,78,70,.12);box-shadow:0 14px 34px rgba(75,48,42,.18);font-size:22px;cursor:pointer}
 .ytbox{display:none;width:0;height:0;overflow:hidden}
 .download-note{text-align:center;color:#8b7470;font-size:12px;margin:10px 0 0}
+  .mobile-break{
+  display:none;
+}
+
+@media(max-width:600px){
+  .mobile-break{
+    display:block;
+  }
+}
 @media(min-width:700px){.screen{padding:24px}.card-stage{width:min(520px,100%)}}
   
 .birthday-flash{
@@ -72,9 +81,11 @@ body.opened .card-stage{display:block}
   border-radius:28px;
   box-shadow:0 24px 70px rgba(75,48,42,.18);
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(30px,8vw,48px);
+  font-size:clamp(28px,6vw,44px);
+  line-height:1.12;
   text-align:center;
   animation:birthdayPop 1.4s ease both;
+  max-width:90vw;
 }
 
 @keyframes birthdayPop{
@@ -137,7 +148,7 @@ function playMusic() {
     song.volume = 0.55;
     song.play();
     btn.textContent = "playing your song ♪";
-    setTimeout(showBirthdayFlash, 2500);
+    setTimeout(showBirthdayFlash, 3000);
   } else {
     song.pause();
     btn.textContent = "a song for you ♪";
@@ -150,7 +161,7 @@ function showBirthdayFlash(){
 
   setTimeout(() => {
     flash.style.display = "none";
-  }, 1500);
+  }, 1800);
 }
 
 async function downloadCard(){
@@ -169,7 +180,8 @@ document.getElementById("musicFab").addEventListener("click", playMusic);
 document.getElementById("downloadBtn").addEventListener("click",downloadCard);
 </script>
 <div class="birthday-flash" id="birthdayFlash">
-  <div>🎂 Happy Birthday, Subbu 💖</div>
+  <div> happy birthday,<span class="mobile-break"><br></span>
+  subbu ♡ </div>
 </div>
 </body>
 </html>
