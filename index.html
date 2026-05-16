@@ -78,19 +78,33 @@ body.opened .card-stage{display:block}
 </main>
 
 <div class="music-fab" id="musicFab">♪</div>
-<div class="ytbox" id="ytbox"></div>
-
+<div id="musicEmbed" style="
+  display:none;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  opacity:0;
+">
+  <iframe
+    width="1"
+    height="1"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    src="https://freefy.app/track/21896349/made-in-japan/embed">
+  </iframe>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-const MUSIC_LINK = "https://freefy.app/track/21896349/made-in-japan";
-
 function playMusic() {
-  window.open(MUSIC_LINK, "_blank");
-}
+  const embed = document.getElementById("musicEmbed");
+  const btn = document.getElementById("musicBtn");
 
-function openCard(){
-  document.body.classList.add("opened");
-  setTimeout(()=>window.scrollTo({top:0,behavior:"smooth"}),80);
+  if (embed.style.display === "none") {
+    embed.style.display = "block";
+    btn.textContent = "playing your song ♪";
+  } else {
+    embed.style.display = "none";
+    btn.textContent = "a song for you ♪";
+  }
 }
 
 async function downloadCard(){
